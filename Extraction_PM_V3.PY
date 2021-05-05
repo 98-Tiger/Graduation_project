@@ -95,3 +95,5 @@ if __name__ == '__main__':
     path_site_index = 'C:/Users/Tiger/Desktop/ceshi/site_index.csv'
     path_out = 'C:/Users/Tiger/Desktop/PM2.5'
     Extaction_site_PM(path_environment, path_site_index, path_out)
+
+    prin
