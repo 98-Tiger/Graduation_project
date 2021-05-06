@@ -35,3 +35,4 @@ model = tf.keras.models.Sequential([
 # 训练模型
 
 # 参数提取、acc/loss可视化、前向推理实现应用
+print('a')
