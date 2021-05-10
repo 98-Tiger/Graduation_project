@@ -87,7 +87,7 @@ def get_Value_to_csv(path_PM, path_Cloud, path_Satellite, path_ERA5, path_AUX, p
     DEM_arr = data_AUX.variables['Height'][:]
     LUCC_arr = data_AUX.variables['LandCoverType'][:]
     # 获取NDVI文件夹下，所有文件的路径
-    path_NDVI_list = get_file_modis(path_NDVI)  
+    path_NDVI_list = get_file_modis(path_NDVI)
     for path_modis in path_NDVI_list:
         # 读取NDVI数据
         dataset_NDVI = gdal.Open(path_modis)
@@ -134,9 +134,7 @@ def get_Value_to_csv(path_PM, path_Cloud, path_Satellite, path_ERA5, path_AUX, p
                 for i in index_pm:
                     # 获取时间相同的PM2.5经纬度
                     site_id = data_PM['site_id'][i]
-                    # 获取这个坐标的相应索引
-                    lat = data_PM['latitude'][i]
-                    lon = data_PM['longitude'][i]
+                    # 获取这个站点的相应索引
                     Cloud_lat_index = data_PM['Cloud_lat_index'][i]
                     Cloud_lon_index = data_PM['Cloud_lon_index'][i]
                     AUX_H8_lat_index = data_PM['AUX_H8_lat_index'][i]
@@ -148,6 +146,9 @@ def get_Value_to_csv(path_PM, path_Cloud, path_Satellite, path_ERA5, path_AUX, p
                     # 获取CLTYPE值
                     CLTYPE = int(CLTYPE_arr[Cloud_lat_index, Cloud_lon_index])
                     if CLTYPE == 0:
+                        # 提取经纬度坐标
+                        lat = data_PM['latitude'][i]
+                        lon = data_PM['longitude'][i]
                         # 提取pm2.5值
                         PM = data_PM['PM2.5'][i]
                         # 提取卫星数据
